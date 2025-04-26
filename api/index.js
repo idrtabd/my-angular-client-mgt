@@ -1,12 +1,11 @@
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
-import Database from 'better-sqlite3';
-import itemsRoutes from './routes/items.js';
-
+import clientsRoutes from './routes/clients.js';
+import 'dotenv/config';
+////
 const app = express();
-const PORT = process.env.PORT || 3000;
-const db = new Database('database.db');
+const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors());
@@ -14,15 +13,13 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 // Routes
-app.use('/api/items', itemsRoutes);
+app.use('/api/clients', clientsRoutes);
 
-// Database init
-db.exec(`CREATE TABLE IF NOT EXISTS items (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  name TEXT NOT NULL
-)`);
+// Basic route
+app.get('/', (req, res) => {
+  res.json({ message: 'API is running' });
+});
 
-// Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
