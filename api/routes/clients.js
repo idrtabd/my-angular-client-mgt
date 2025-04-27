@@ -17,6 +17,8 @@ router.get('/', async (req, res) => {
 
 // Get client by ID
 router.get('/:id', async (req, res) => {
+  console.log('Fetching client with ID:', req.params.id);
+  
   try {
     const [rows] = await pool.query('SELECT * FROM client WHERE id = ?', [req.params.id]);
     if (rows.length === 0) return res.status(git).json({ error: 'Client not found' });

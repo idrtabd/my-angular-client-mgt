@@ -1,9 +1,11 @@
+// src/app/app.component.ts
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, RouterModule],
+  standalone: true,
   template: `
     <h1>Welcome to {{title}}!</h1>
 

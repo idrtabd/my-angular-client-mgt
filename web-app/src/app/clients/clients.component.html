@@ -1,0 +1,9 @@
+<h2>Clients List</h2>
+<!-- Just a simple list items , one for each client -->
+<ul>
+  <li *ngFor="let client of clients">
+    <strong>{{client.name}}</strong> <br>
+    Email: {{client.email || 'N/A'}} <br>
+    Phone: {{client.phone || 'N/A'}} <br>
+
+  </li>
