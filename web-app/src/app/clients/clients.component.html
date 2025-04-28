@@ -1,9 +1,13 @@
-<h2>Clients List</h2>
-<!-- Just a simple list items , one for each client -->
-<ul>
-  <li *ngFor="let client of clients">
-    <strong>{{client.name}}</strong> <br>
-    Email: {{client.email || 'N/A'}} <br>
-    Phone: {{client.phone || 'N/A'}} <br>
+<h2>Clients Page</h2>
 
-  </li>
+<div *ngIf="clients.length > 0; else noClients">
+  <ul>
+    <li *ngFor="let client of clients">
+      {{ client.name }}
+    </li>
+  </ul>
+</div>
+
+<ng-template #noClients>
+  <p>No clients found.</p>
+</ng-template>

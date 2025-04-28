@@ -6,21 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   selector: 'app-clients',
   imports: [CommonModule, HttpClientModule],   // <-- VERY IMPORTANT: import HttpClientModule
-  template: `
-    <h2>Clients Page</h2>
-
-    <div *ngIf="clients.length > 0; else noClients">
-      <ul>
-        <li *ngFor="let client of clients">
-          {{ client.name }}
-        </li>
-      </ul>
-    </div>
-
-    <ng-template #noClients>
-      <p>No clients found.</p>
-    </ng-template>
-  `
+ templateUrl: './clients.component.html', 
 })
 export class ClientsComponent implements OnInit {
   clients: any[] = [];
