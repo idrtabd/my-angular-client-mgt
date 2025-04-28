@@ -1,1 +1,46 @@
-<p>clients works!</p>
+<!-- Dark Mode Toggle Button -->
+<div style="text-align: right; margin: 16px;">
+    <button mat-raised-button color="primary" (click)="toggleDarkMode()">
+      Toggle Dark Mode
+    </button>
+  </div>
+  
+  <!-- Main Content -->
+  <ng-container *ngIf="!loading; else loadingSpinner">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Clients Page</mat-card-title>
+        <mat-card-subtitle>Material UI Test</mat-card-subtitle>
+      </mat-card-header>
+  
+      <mat-card-content>
+        <p>This is a card using Angular Material!</p>
+  
+        <div style="margin-bottom: 16px;">
+          <button mat-raised-button color="primary">
+            Primary Button
+          </button>
+  
+          <button mat-raised-button color="accent" style="margin-left: 8px;">
+            Accent Button
+          </button>
+        </div>
+  
+        <mat-divider></mat-divider>
+  
+        <mat-list>
+          <mat-list-item *ngFor="let client of clients">
+            {{ client.name }}
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+  
+  <!-- Loading Spinner -->
+  <ng-template #loadingSpinner>
+    <div style="display: flex; justify-content: center; align-items: center; height: 80vh;">
+      <mat-progress-spinner color="primary" mode="indeterminate" diameter="60"></mat-progress-spinner>
+    </div>
+  </ng-template>
+  

@@ -1,13 +1,21 @@
 <h2>Clients Page</h2>
 
-<div *ngIf="clients.length > 0; else noClients">
-  <ul>
-    <li *ngFor="let client of clients">
-      {{ client.name }}
-    </li>
-  </ul>
-</div>
+<mat-card *ngIf="clients.length > 0; else noClients">
+  <mat-card-title>Clients List</mat-card-title>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let client of clients">
+        {{ client.name }}
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
 
 <ng-template #noClients>
-  <p>No clients found.</p>
+  <mat-card>
+    <mat-card-title>No Clients</mat-card-title>
+    <mat-card-content>
+      <p>No clients found.</p>
+    </mat-card-content>
+  </mat-card>
 </ng-template>
