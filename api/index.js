@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors({
-  origin: 'http://localhost:4200',   // <-- allow your Angular app only
+  origin: '*', // this allows all origins, you can specify a specific origin if needed
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 
