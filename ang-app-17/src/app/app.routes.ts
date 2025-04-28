@@ -1,4 +1,3 @@
-import { Client } from './../../../web-app/node_modules/undici-types/client.d';
 import { Routes } from '@angular/router';
 import { ClientsComponent } from './clients/clients.component';
 import { HomeComponent } from './home.component';
