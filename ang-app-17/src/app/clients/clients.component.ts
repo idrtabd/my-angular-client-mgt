@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-// import common modules
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ClientsService } from './clients.service';  // reimport service
+import { timer } from 'rxjs';  // <-- NEW import
 
 @Component({
   selector: 'app-clients',
@@ -16,33 +17,40 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatButtonModule,
     MatDividerModule,
     MatListModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   templateUrl: './clients.component.html',
-  styleUrls: ['./clients.component.scss']
+  styleUrls: ['./clients.component.scss'],
 })
-
 export class ClientsComponent {
+  clients: any[] = [];
   loading = true;
+  error = false;  // <-- NEW: track if there was an error
 
-  // ngInit function to set timeout and spinner for loading, simulates a loading delay
+  constructor(private clientsService: ClientsService) {}
+
   ngOnInit() {
-    setTimeout(() => {
-      this.loading = false;
-    }, 2000);
+    console.log('Component loaded!');
+    this.loadClients();
   }
 
-  clients = [
-    { name: 'Client One' },
-    { name: 'Client Two' },
-    { name: 'Client Three' }
-  ];
+  loadClients() {
+    this.loading = true;
+    this.error = false;  // reset error state before loading
+    this.clientsService.getClients().subscribe({
+      next: (clients) => {
+        this.clients = clients;
+        this.loading = false;
+      },
+      error: (error) => {
+        console.error('Failed to load clients', error);
+        this.error = true;
+        this.loading = false;
+      }
+    });
+  }
 
-
-  // function to toggleDarkMode
   toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
   }
-
-
 }

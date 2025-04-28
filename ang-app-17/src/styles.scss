@@ -1,5 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
+
 
 // Define light theme
 $light-primary: mat.define-palette(mat.$indigo-palette);
@@ -26,5 +26,6 @@ $dark-theme: mat.define-dark-theme((
 
 // Dark mode class
 .dark-mode {
-  @include mat.all-component-themes($dark-theme);
+  @include mat.all-component-colors($dark-theme);
+  @include mat.all-component-typographies($dark-theme);
 }
