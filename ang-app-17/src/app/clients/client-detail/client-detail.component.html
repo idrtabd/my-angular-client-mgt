@@ -1,0 +1,53 @@
+<mat-card style="margin: 1rem;">
+    <mat-card-header>
+      <img mat-card-avatar [src]="client.imageUrl || 'assets/default-avatar.png'" alt="Client photo" />
+      <mat-card-title>{{ client.name }}</mat-card-title>
+      <mat-card-subtitle>{{ client.email }}</mat-card-subtitle>
+    </mat-card-header>
+  
+    <mat-card-content>
+      <p><strong>Phone:</strong> {{ client.phone }}</p>
+      <p><strong>Address:</strong> {{ client.address }}, {{ client.city }}, {{ client.state }} {{ client.zipcode }}</p>
+      <p><strong>Company:</strong> {{ client.company }}</p>
+    </mat-card-content>
+  </mat-card>
+  
+  <mat-card
+  *ngFor="let appointment of appointments"
+  class="appointment-card"
+  [ngClass]="{
+    'completed': appointment.status === 'Completed',
+    'scheduled': appointment.status === 'Scheduled',
+    'cancelled': appointment.status === 'Cancelled'
+  }"
+>
+  <mat-card-header>
+    <mat-card-title>{{ appointment.reason }}</mat-card-title>
+    <mat-card-subtitle>Status: {{ appointment.status }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p><strong>Start:</strong> {{ appointment.startDate | date: 'short' }}</p>
+    <p><strong>End:</strong> {{ appointment.endDate | date: 'short' }}</p>
+    <p><strong>Notes:</strong> {{ appointment.notes }}</p>
+    <!-- Delete Appointment  -->
+    <button mat-icon-button (click)="deleteAppointment(appointment.id)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-content>
+</mat-card>
+
+  
+
+
+<!-- New appointment Form -->
+
+ 
+  
+<button
+mat-fab
+color="primary"
+class="add-appointment-fab"
+(click)="openAddAppointment()"
+>
+<mat-icon>add</mat-icon>
+</button>

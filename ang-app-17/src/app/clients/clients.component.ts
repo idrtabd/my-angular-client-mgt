@@ -5,8 +5,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { ClientsService } from './clients.service';  // reimport service
-import { timer } from 'rxjs';  // <-- NEW import
+import { ClientsService } from './clients.service'; 
+import { Router } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-clients',
@@ -18,6 +19,7 @@ import { timer } from 'rxjs';  // <-- NEW import
     MatDividerModule,
     MatListModule,
     MatProgressSpinnerModule,
+    MatIconModule,
   ],
   templateUrl: './clients.component.html',
   styleUrls: ['./clients.component.scss'],
@@ -27,12 +29,21 @@ export class ClientsComponent {
   loading = true;
   error = false;  // <-- NEW: track if there was an error
 
-  constructor(private clientsService: ClientsService) {}
+  constructor(private clientsService: ClientsService, private router: Router) {}
 
   ngOnInit() {
     console.log('Component loaded!');
     this.loadClients();
   }
+  onImageLoad(event: Event) {
+    const imgElement = event.target as HTMLImageElement;
+    imgElement.classList.add('loaded');
+  }
+  
+  viewClient(client: any) {
+    this.router.navigate(['/client', client.id], { state: { client } });
+  }
+  
 
   loadClients() {
     this.loading = true;
@@ -49,6 +60,8 @@ export class ClientsComponent {
       }
     });
   }
+
+  
 
   toggleDarkMode() {
     document.body.classList.toggle('dark-mode');

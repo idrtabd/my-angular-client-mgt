@@ -1,0 +1,49 @@
+<h2 mat-dialog-title>Add New Appointment</h2>
+
+<mat-dialog-content style="padding-top: 1rem;">
+  <!-- Reason Field -->
+  <mat-form-field appearance="fill" style="width: 100%; margin-bottom: 1rem;">
+    <mat-label>Reason</mat-label>
+    <input matInput [(ngModel)]="newAppointment.reason" name="reason" required #reasonInput />
+  </mat-form-field>
+
+  <!-- Appointment Date (Native HTML date picker) -->
+  <mat-form-field appearance="fill" style="width: 100%; margin-bottom: 1rem;">
+    <mat-label>Appointment Date</mat-label>
+    <input matInput type="date" [(ngModel)]="appointmentDateString" name="appointmentDate" required />
+  </mat-form-field>
+
+  <!-- Start Time -->
+  <mat-form-field appearance="fill" style="width: 100%; margin-bottom: 1rem;">
+    <mat-label>Start Time</mat-label>
+    <input matInput type="time" [(ngModel)]="startTime" name="startTime" required />
+  </mat-form-field>
+
+  <!-- End Time -->
+  <mat-form-field appearance="fill" style="width: 100%; margin-bottom: 1rem;">
+    <mat-label>End Time</mat-label>
+    <input matInput type="time" [(ngModel)]="endTime" name="endTime" required />
+  </mat-form-field>
+
+  <!-- Status -->
+  <mat-form-field appearance="fill" style="width: 100%; margin-bottom: 1rem;">
+    <mat-label>Status</mat-label>
+    <mat-select [(ngModel)]="newAppointment.status" name="status">
+      <mat-option value="Scheduled">Scheduled</mat-option>
+      <mat-option value="Completed">Completed</mat-option>
+      <mat-option value="Cancelled">Cancelled</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Notes -->
+  <mat-form-field appearance="fill" style="width: 100%; margin-bottom: 1rem;">
+    <mat-label>Notes</mat-label>
+    <textarea matInput [(ngModel)]="newAppointment.notes" name="notes"></textarea>
+  </mat-form-field>
+
+  <!-- Action Buttons -->
+  <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1rem;">
+    <button mat-button (click)="cancel()">Cancel</button>
+    <button mat-flat-button color="primary" (click)="save()">Save</button>
+  </div>
+</mat-dialog-content>

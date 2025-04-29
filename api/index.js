@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import clientsRoutes from './routes/clients.js';
+import appointmentsRoutes from './routes/appointments.js';
 import 'dotenv/config';
 ////
 const app = express();
@@ -20,6 +21,7 @@ app.use(morgan('dev'));
 
 // Routes
 app.use('/api/clients', clientsRoutes);
+app.use('/api/appointments', appointmentsRoutes);
 
 // Basic route
 app.get('/', (req, res) => {

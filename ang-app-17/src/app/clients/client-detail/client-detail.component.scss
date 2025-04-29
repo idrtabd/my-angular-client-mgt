@@ -1,0 +1,73 @@
+.appointments-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* Bigger breathing room between cards */
+    padding: 1.5rem;
+  }
+  
+  .appointment-card {
+    padding: 1.5rem;
+    margin-left: 1rem;
+    background: #f9f9f9; /* Light background for card */
+    border: 1px solid #ddd; /* Subtle border */
+    border-left: 6px solid gray;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05); /* Very light shadow */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Status-based colors for left border */
+  .appointment-card.completed {
+    border-left-color: #4caf50; /* Green */
+  }
+  
+  .appointment-card.scheduled {
+    border-left-color: #2196f3; /* Blue */
+  }
+  
+  .appointment-card.cancelled {
+    border-left-color: #f44336; /* Red */
+  }
+  
+  .appointment-card mat-card-title {
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .appointment-card mat-card-subtitle {
+    font-size: 1rem;
+    color: gray;
+  }
+  
+  /* Little colored badge next to title */
+  .status-badge {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+  }
+  
+  .status-scheduled {
+    background-color: #2196f3;
+  }
+  
+  .status-completed {
+    background-color: #4caf50;
+  }
+  
+  .status-cancelled {
+    background-color: #f44336;
+  }
+  
+  .add-appointment-fab {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+  

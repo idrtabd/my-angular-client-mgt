@@ -1,0 +1,20 @@
+mat-card {
+  cursor: pointer; /* Show hand icon */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+mat-card:hover {
+  background-color: rgba(0, 0, 0, 0.04); /* Light grey hover */
+}
+
+img[mat-card-avatar] {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease; /* <-- transition goes here */
+  border-radius: 50%; /* (optional) to keep it round */
+  object-fit: cover; /* (optional) to make images perfectly fit */
+}
+
+img[mat-card-avatar].loaded {
+  opacity: 1;
+}

@@ -1,24 +1,45 @@
-<button mat-raised-button (click)="loadClients()" style="margin-bottom: 16px;">
-    Reload Clients
-  </button>
-  
-  <ng-container *ngIf="!loading && !error">
-    <mat-card *ngFor="let client of clients" style="margin-bottom: 16px;">
+<button mat-raised-button (click)="loadClients()" style="margin-bottom: 16px">
+  Reload Clients
+</button>
+
+<ng-container *ngIf="!loading && !error">
+  <mat-card
+    *ngFor="let client of clients"
+    (click)="viewClient(client)"
+    style="margin: 8px 0"
+  >
+    <!-- Make a clickable card for each client -->
+    <mat-card-header>
+      <img
+        mat-card-avatar
+        [src]="client.imageUrl || 'assets/default-avatar.png'"
+        alt="Client photo"
+        (load)="onImageLoad($event)"
+      />
+
       <mat-card-title>{{ client.name }}</mat-card-title>
-      <mat-card-content>{{ client.email }}</mat-card-content>
-    </mat-card>
-  </ng-container>
-  
-  <ng-container *ngIf="loading">
-    <div style="text-align: center; padding: 24px;">
-      <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
-    </div>
-  </ng-container>
-  
-  <ng-container *ngIf="error">
-    <div style="text-align: center; padding: 24px;">
-      <h2>Failed to load clients.</h2>
-      <p>Please try again later.</p>
-    </div>
-  </ng-container>
-  
+      <mat-card-subtitle>{{ client.email }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong>Phone:</strong> {{ client?.phone }}</p>
+      <p>
+        <strong>Address:</strong> {{ client.address }}, {{ client.city }},
+        {{ client.state }} {{ client.zipcode }}
+      </p>
+      <p><strong>Company:</strong> {{ client.company }}</p>
+    </mat-card-content>
+  </mat-card>
+</ng-container>
+
+<ng-container *ngIf="loading">
+  <div style="text-align: center; padding: 24px">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="error">
+  <div style="text-align: center; padding: 24px">
+    <h2>Failed to load clients.</h2>
+    <p>Please try again later.</p>
+  </div>
+</ng-container>

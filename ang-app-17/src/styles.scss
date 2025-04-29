@@ -29,3 +29,10 @@ $dark-theme: mat.define-dark-theme((
   @include mat.all-component-colors($dark-theme);
   @include mat.all-component-typographies($dark-theme);
 }
+
+body {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

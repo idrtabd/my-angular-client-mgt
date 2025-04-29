@@ -1,0 +1,36 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()" class="show-mobile">
+      <mat-icon>menu</mat-icon>
+    </button>
+  
+    <span class="app-title">Client Management System</span>
+  
+    <span style="flex: 1 1 auto;"></span>
+  
+    <div class="show-desktop">
+      <button mat-button routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+        <mat-icon>home</mat-icon> Home
+      </button>
+      <button mat-button routerLink="/clients" routerLinkActive="active-link">
+        <mat-icon>groups</mat-icon> Clients
+      </button>
+    </div>
+  </mat-toolbar>
+  
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="over" class="app-sidenav">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" (click)="sidenav.close()">
+          <mat-icon>home</mat-icon> Home
+        </a>
+        <a mat-list-item routerLink="/clients" routerLinkActive="active-link" (click)="sidenav.close()">
+          <mat-icon>groups</mat-icon> Clients
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+  
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-container>
+  

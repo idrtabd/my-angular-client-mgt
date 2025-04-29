@@ -1,5 +1,33 @@
+.sidenav-container {
+  height: calc(100vh - 64px); /* Viewport height minus toolbar height */
+  margin-top: 64px; /* Push the content down under the toolbar */
+}
+
 .active-link {
-    font-weight: bold;
-    text-decoration: underline;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  font-weight: bold;
+  padding: 0.25rem 0.75rem;
+}
+
+.app-title {
+  font-weight: bold;
+}
+
+.show-mobile {
+  display: none;
+}
+
+.show-desktop {
+  display: flex;
+}
+
+/* Mobile rules: */
+@media (max-width: 768px) {
+  .show-mobile {
+    display: inline-flex;
   }
-  
+  .show-desktop {
+    display: none;
+  }
+}
